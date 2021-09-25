@@ -191,7 +191,7 @@ void Board::menu(){
 }
 ///////////////////////////////////////
 bool Board::move(int y, int x, int r){
-    int choice;
+    size_t choice;
     std::string str;
     moves.clear();
     
@@ -216,7 +216,7 @@ bool Board::move(int y, int x, int r){
         }
         return false;
     }else{
-        for(int i = 0; i < moves.size(); i++){
+        for(size_t i = 0; i < moves.size(); i++){
             Piece piece = moves[i].piece;
             std::cout << i + 1 << ". (" << piece.x << "," << piece.y << ") --->"; 
             std::cout << " (" << moves[i].x;std::cout << "," << moves[i].y << ")" << std::endl;
@@ -225,7 +225,7 @@ bool Board::move(int y, int x, int r){
             std::cout << "Enter an integer corresponding to the move" << std::endl;
             std::cin >> str;
             if(isdigit(str[0])){
-                choice = atod<int>(str);
+                choice = atod<size_t>(str);
             }else{
                 std::cout << "Invalid input" << std::endl;
                 continue;
@@ -248,7 +248,7 @@ bool Board::move(int y, int x, int r){
 ///////////////////////////////////////
 void Board::filterMoves(){
     bool flag = false;
-    for(int i = 0; i < moves.size(); i++){
+    for(size_t i = 0; i < moves.size(); i++){
         if(moves[i].type == 1){                 //Detect a take move
             flag = true;
         }
